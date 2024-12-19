@@ -1,0 +1,3 @@
+class AppRouterKeys {
+  AppRouterKeys._();
+}

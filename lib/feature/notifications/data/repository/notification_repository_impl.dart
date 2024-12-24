@@ -10,12 +10,12 @@ class NotificationRepositoryImpl implements NotificationRepository {
     // محاكاة استدعاء API
     await Future.delayed(const Duration(seconds: 1));
     return [
-      NotificationEntity(
-        title: "New course arrival",
-        subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing...",
-        time: "1h",
-        icon: Icons.school,
-      ),
+      // NotificationEntity(
+      //   title: "New course arrival",
+      //   subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing...",
+      //   time: "1h",
+      //   icon: Icons.school,
+      // ),
     ];
   }
 
@@ -24,18 +24,18 @@ class NotificationRepositoryImpl implements NotificationRepository {
     // محاكاة استدعاء API
     await Future.delayed(const Duration(seconds: 1));
     return [
-      NotificationEntity(
-        title: "New course arrival",
-        subtitle: "Dorem ipsum dolor sit amet, consectetur adipiscing et velit interdum, ac aliquet odio mattis.",
-        time: "1d",
-        icon: Icons.school,
-      ),
-      NotificationEntity(
-        title: "Certificate available",
-        subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing...",
-        time: "1d",
-        icon: Icons.verified,
-      ),
+      // NotificationEntity(
+      //   title: "New course arrival",
+      //   subtitle: "Dorem ipsum dolor sit amet, consectetur adipiscing et velit interdum, ac aliquet odio mattis.",
+      //   time: "1d",
+      //   icon: Icons.school,
+      // ),
+      // NotificationEntity(
+      //   title: "Certificate available",
+      //   subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing...",
+      //   time: "1d",
+      //   icon: Icons.verified,
+      // ),
     ];
   }
 }

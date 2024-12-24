@@ -18,16 +18,20 @@ class NotificationsPage extends ConsumerWidget {
       appBar: AppBar(
         //backgroundColor: Colors.white,
         elevation: 0,
-        leading: CircleAvatar(
-          backgroundColor: Colors.white,
-          child: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Color(0xFF662D91)),
-            onPressed: () {},
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: CircleAvatar(
+            radius: 1.r*30,
+            backgroundColor: Colors.white,
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back, color: Color(0xFF662D91)),
+              onPressed: () {},
+            ),
           ),
         ),
         title: const Text(
           "Notifications",
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: Colors.black, fontSize: 20, fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
           actions: [
@@ -36,7 +40,7 @@ class NotificationsPage extends ConsumerWidget {
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             decoration: BoxDecoration(
               color: Color(0xFF662D91),
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(1.r*20),
             ),
             child: const Text(
               "2 New",

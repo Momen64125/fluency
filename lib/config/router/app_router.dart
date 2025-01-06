@@ -15,7 +15,7 @@ class AppRouter {
   static final GoRouter router = GoRouter(
     navigatorKey: navigatorState,
     debugLogDiagnostics: kDebugMode,
-    initialLocation: AppRoutes.home,
+    initialLocation: AppRoutes.signin,
     errorBuilder: (context, state) => const Scaffold(
       body: Center(child: Text('Not Found')),
     ),
@@ -44,6 +44,12 @@ class AppRouter {
         name: AppRoutes.home,
         path: AppRoutes.home,
         builder: (context, state) => const HomePage(),
+      ),
+      ///?profile
+      GoRoute(
+        name: AppRoutes.profile,
+        path: AppRoutes.profile,
+        builder: (context, state) => const SignInScreen(),
       ),
 
     ],

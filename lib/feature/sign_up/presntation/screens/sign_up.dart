@@ -17,7 +17,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
 
   String name = '';
-  String email = '';
+  String identifier = '';
   String phone = '';
   String password = '';
   String gender = 'Male';
@@ -98,7 +98,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                           const Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text('Email',
+                              Text('identifier',
                                 style: TextStyle(
                                   fontSize: 14,
                                   fontWeight: FontWeight.bold,
@@ -107,10 +107,10 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
                             ],
                           ),
                           CustomTextFormField(
-                            labelText: 'Enter your email',
+                            labelText: 'Enter your identifier',
                             validator: (value) =>
-                            value == null || value.isEmpty ? 'Email is required' : null,
-                            onSaved: (value) => email = value ?? '',
+                            value == null || value.isEmpty ? 'identifier is required' : null,
+                            onSaved: (value) => identifier = value ?? '',
                             keyboardType: TextInputType.emailAddress,
                           ),
                           const SizedBox(height: 20),
@@ -213,7 +213,7 @@ class _SignUpScreenState extends ConsumerState<SignUpScreen> {
 
                                   ref.read(signUpProvider.notifier).signUp(
                                     name,
-                                    email,
+                                    identifier,
                                     password,
                                     phone,
                                   );

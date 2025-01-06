@@ -18,12 +18,33 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<SignInEntite> login(String email, String password) async {
+  Future<SignInEntite> login(String identifier, String password) async {
     try {
-      final responseData = await remoteDataSource.login(email, password);
+      final responseData = await remoteDataSource.login(identifier, password);
       return SignInModel.fromJson(responseData);
     } catch (e) {
       throw Exception('فشل تسجيل الدخول: $e');
     }
   }
+// }
+// import 'package:fluency/feature/sign_in/domain/entites/sign_in_entite.dart';
+// import '../../data/datasources/sign_in_datasources.dart';
+// import '../../domain/repository/sign_in_repository.dart';
+// import '../model/sign_in_model.dart';
+//
+// class AuthRepositoryImpl implements AuthRepository {
+//   final AuthRemoteDataSource remoteDataSource;
+//
+//   AuthRepositoryImpl(this.remoteDataSource);
+//
+//   @override
+//   Future<SignInEntite> login(String identifier, String password) async {
+//     try {
+//       final responseData = await remoteDataSource.login(identifier, password);
+//       return SignInModel.fromJson(responseData);
+//     } catch (e) {
+//       throw Exception('فشل تسجيل الدخول: $e');
+//     }
+//   }
+// }
 }

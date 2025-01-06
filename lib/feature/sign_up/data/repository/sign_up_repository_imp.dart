@@ -8,9 +8,9 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<SignUpEntite> createAccount(String email, String password, String name, String phone) async {
+  Future<SignUpEntite> createAccount(String identifier, String password, String name, String phone) async {
     try {
-      final responseData = await remoteDataSource.createAccount(email, password,name,phone);
+      final responseData = await remoteDataSource.createAccount(identifier, password,name,phone);
       return SignUpModel.fromJson(responseData);
     } catch (e) {
 

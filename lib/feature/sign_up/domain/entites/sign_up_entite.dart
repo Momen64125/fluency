@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 class SignUpEntite extends Equatable {
-  final String email;
+  final String identifier;
   final String password;
   final String phone;
   final String name;
   const SignUpEntite({
-    required this.email,
+    required this.identifier,
     required this.password,
     required this.phone,
     required this.name
@@ -14,7 +14,7 @@ class SignUpEntite extends Equatable {
 
   @override
   // TODO: implement props
-  List<Object?> get props => [email,password,phone,name];
+  List<Object?> get props => [identifier,password,phone,name];
 
 
 }

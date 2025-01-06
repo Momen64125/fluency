@@ -35,10 +35,10 @@ class SignUpNotifier extends StateNotifier<AsyncValue<SignUpEntite?>> {
 
   SignUpNotifier(this.signUpUseCase) : super(const AsyncValue.data(null));
 
-  Future<void> signUp(String name, String email, String password, String phone) async {
+  Future<void> signUp(String name, String identifier, String password, String phone) async {
     state = const AsyncValue.loading();
     try {
-      final user = await signUpUseCase.execute(name, email, password, phone);
+      final user = await signUpUseCase.execute(name, identifier, password, phone);
       state = AsyncValue.data(user);
     } catch (e) {
       state = AsyncValue.error("Failed to sign up. Please try again later." , StackTrace.current);

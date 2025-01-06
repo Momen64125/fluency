@@ -225,7 +225,7 @@
 // // }
 // import 'package:flutter/material.dart';
 //
-// import '../notifications/presentation/screens/notifications_screen.dart';
+// import '../notifications/presentation/screens/profile_screen.dart';
 //  // استيراد شاشة الإشعارات
 //
 // class HomePage extends StatefulWidget {
@@ -280,6 +280,7 @@
 
 import 'package:flutter/material.dart';
 import '../notifications/presentation/screens/notifications_screen.dart';
+import '../profile/presentation/screens/profile_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -296,7 +297,7 @@ class _HomePageState extends State<HomePage> {
     const Center(child: Text('Sessions Screen', style: TextStyle(fontSize: 24))),
     const Center(child: Text('Add New Screen', style:  TextStyle(fontSize: 24))),
     const Center(child: Text('Teachers Screen', style: TextStyle(fontSize: 24))),
-    const Center(child: Text('Profile Screen', style:  TextStyle(fontSize: 24))),
+    ProfileScreen(),
 
 
   ];

@@ -1,6 +1,6 @@
 // import 'package:flutter/material.dart';
 //
-// import '../../domain/entites/notification_entity.dart';
+// import '../../domain/entites/profile_entity.dart';
 //
 // class NotificationModel {
 //   final String title;

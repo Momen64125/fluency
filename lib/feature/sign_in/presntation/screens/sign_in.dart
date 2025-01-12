@@ -205,6 +205,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../core/widgets/text_field.dart'; // مكون TextField مخصص
  // الشاشة الخاصة بالتسجيل
+import '../../../home/home_screen.dart';
 import '../../../sign_up/presntation/screens/sign_up.dart';
 import '../controller/sign_in_controller.dart'; // التحكم في تسجيل الدخول
 class SignInScreen extends ConsumerStatefulWidget {
@@ -343,6 +344,14 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                                   identifierController.text,
                                   passwordController.text,
                                 );
+                                loginState.when(
+                                  data: (user) => user == null
+                                      ? const SizedBox()
+                                      : Navigator.push(context, MaterialPageRoute(builder: (context) => const HomePage())),
+                                  loading: () => const CircularProgressIndicator(),
+                                  error: (error, _) => Text('Error: $error'),
+                                );
+
                               },
                               style: ElevatedButton.styleFrom(
                                 elevation: 0,
@@ -360,13 +369,13 @@ class _SignInScreenState extends ConsumerState<SignInScreen> {
                           ),
                         ),
                         const SizedBox(height: 20),
-                        loginState.when(
-                          data: (user) => user == null
-                              ? const SizedBox()
-                              : Text('Welcome, ${user.identifier}!'),
-                          loading: () => const CircularProgressIndicator(),
-                          error: (error, _) => Text('Error: $error'),
-                        ),
+                        // loginState.when(
+                        //   data: (user) => user == null
+                        //       ? const SizedBox()
+                        //       : Text('Welcome, ${user.identifier}!'),
+                        //   loading: () => const CircularProgressIndicator(),
+                        //   error: (error, _) => Text('Error: $error'),
+                        // ),
                       ],
                     ),
                   ),

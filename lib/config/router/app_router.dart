@@ -15,7 +15,7 @@ class AppRouter {
   static final GoRouter router = GoRouter(
     navigatorKey: navigatorState,
     debugLogDiagnostics: kDebugMode,
-    initialLocation: AppRoutes.signin,
+    initialLocation: AppRoutes.splash,
     errorBuilder: (context, state) => const Scaffold(
       body: Center(child: Text('Not Found')),
     ),

@@ -281,6 +281,8 @@
 import 'package:flutter/material.dart';
 import '../notifications/presentation/screens/notifications_screen.dart';
 import '../profile/presentation/screens/profile_screen.dart';
+import '../sessions/presentation/screens/sessions.dart';
+import '../teachers/presentation/screens/teachers_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -294,9 +296,10 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _screens = [
     NotificationsPage(),
-    const Center(child: Text('Sessions Screen', style: TextStyle(fontSize: 24))),
+    SessionsScreen(),
     const Center(child: Text('Add New Screen', style:  TextStyle(fontSize: 24))),
     const Center(child: Text('Teachers Screen', style: TextStyle(fontSize: 24))),
+   // TeachersScreen(),
     ProfileScreen(),
 
 

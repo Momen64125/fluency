@@ -2,8 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../feature/home/home_screen.dart';
+import '../../feature/profile/presentation/screens/profile_screen.dart';
+import '../../feature/sessions/presentation/screens/sessions.dart';
 import '../../feature/sign_in/presntation/screens/sign_in.dart';
 import '../../feature/splash/splash.dart';
+import '../../feature/teachers/presentation/screens/teachers_screen.dart';
 import 'app_routing_paths.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +18,7 @@ class AppRouter {
   static final GoRouter router = GoRouter(
     navigatorKey: navigatorState,
     debugLogDiagnostics: kDebugMode,
-    initialLocation: AppRoutes.splash,
+    initialLocation: AppRoutes.home,
     errorBuilder: (context, state) => const Scaffold(
       body: Center(child: Text('Not Found')),
     ),
@@ -49,8 +52,21 @@ class AppRouter {
       GoRoute(
         name: AppRoutes.profile,
         path: AppRoutes.profile,
-        builder: (context, state) => const SignInScreen(),
+        builder: (context, state) =>  ProfileScreen(),
       ),
+      ///?teachers
+      GoRoute(
+        name: AppRoutes.TeachersScreen,
+        path: AppRoutes.TeachersScreen,
+        builder: (context, state) => TeachersScreen(),
+      ),
+      ///?sessions
+      GoRoute(
+        name: AppRoutes.SessionsScreen,
+        path: AppRoutes.SessionsScreen,
+        builder: (context, state) =>   const SessionsScreen(),
+      )
+
 
     ],
   );

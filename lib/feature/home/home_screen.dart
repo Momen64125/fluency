@@ -279,11 +279,10 @@
 // }
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../notifications/presentation/screens/notifications_screen.dart';
 import '../profile/presentation/screens/profile_screen.dart';
 import '../sessions/presentation/screens/sessions.dart';
-import '../teachers/presentation/screens/teachers_screen.dart';
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -297,9 +296,10 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _screens = [
     NotificationsPage(),
     SessionsScreen(),
-    const Center(child: Text('Add New Screen', style:  TextStyle(fontSize: 24))),
-    const Center(child: Text('Teachers Screen', style: TextStyle(fontSize: 24))),
-   // TeachersScreen(),
+    const Center(child: Text('Add New Screen', style: TextStyle(fontSize: 24))),
+    const Center(
+        child: Text('Teachers Screen', style: TextStyle(fontSize: 24))),
+    // TeachersScreen(),
     ProfileScreen(),
 
 
@@ -311,15 +311,24 @@ class _HomePageState extends State<HomePage> {
       body: _screens[_currentIndex],
 
       // الزر العائم
-      floatingActionButton: CircleAvatar(
-        radius: 30,
+      floatingActionButton: Container(
+        width: 60,
+        height: 60,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          gradient: const LinearGradient(
+            colors: [Color(0xFF662D91), Color(0xFF905EB6)],
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+          ),),
+
         child: FloatingActionButton(
-          backgroundColor: Colors.deepPurple,
-          onPressed: (){}, child: const Icon(Icons.add),),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          onPressed: () {}, child: const Icon(Icons.add, color: Colors.white),),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
 
-      // شريط التنقل السفلي
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         shape: const CircularNotchedRectangle(),
@@ -328,25 +337,27 @@ class _HomePageState extends State<HomePage> {
           height: 60, // ارتفاع الشريط السفلي
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
+
             children: [
               _buildNavItem(
-                icon: Icons.home,
+                widget:Icon( Icons.home),
+
                 label: 'Home',
                 index: 0,
               ),
               _buildNavItem(
-                icon: Icons.video_camera_front_outlined,
+                widget:  SvgPicture.asset('assets/icons/session.svg'),
                 label: 'Sessions',
                 index: 1,
               ),
               const SizedBox(width: 40), // مكان الزر العائم
               _buildNavItem(
-                icon: Icons.people_alt_outlined,
+                  widget:Icon( Icons.people_alt_outlined),
                 label: 'Teachers',
                 index: 3,
               ),
               _buildNavItem(
-                icon: Icons.person_outline_outlined,
+                widget: Icon(Icons.person_outline_outlined),
                 label: 'Profile',
                 index: 4,
               ),
@@ -357,13 +368,46 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget _buildNavItem(
-      {
-    required IconData icon,
+//   Widget _buildNavItem(
+//       {
+//     required IconData icon,
+//     required String label,
+//     required int index,
+//   }) {
+//     final isSelected = _currentIndex == index;
+//     return GestureDetector(
+//       onTap: () {
+//         setState(() {
+//           _currentIndex = index;
+//         });
+//       },
+//       child: Column(
+//         mainAxisSize: MainAxisSize.min,
+//         children: [
+//           Icon(
+//             icon,
+//             color: isSelected ? Color(0xFF662D91) : Color(0xFF9983A7),
+//           ),
+//           Text(
+//             label,
+//             style: TextStyle(
+//               fontSize: 12,
+//               color: isSelected ? Color(0xFF662D91) : Color(0xFF9983A7),
+//             ),
+//           ),
+//
+//         ],
+//       ),
+//     );
+//   }
+// }
+  Widget _buildNavItem({
+    required Widget? widget,
     required String label,
     required int index,
   }) {
     final isSelected = _currentIndex == index;
+
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -373,20 +417,45 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
-            icon,
-            color: isSelected ? Color(0xFF662D91) : Color(0xFF9983A7),
+          Stack(
+            alignment: Alignment.center,
+            clipBehavior: Clip.none,
+            children: [
+              ColorFiltered(
+                colorFilter: ColorFilter.mode(
+                   isSelected ? Color(0xFF662D91) : Color(0xFF9983A7)
+                    , BlendMode.srcIn
+                ),
+                child: widget,
+              ),
+              if (isSelected)
+                Positioned(
+                  top: -15,
+                  child: Container(
+                    width: 20,
+                    height: 5,
+                    decoration: BoxDecoration(
+                      borderRadius:  BorderRadius.only( bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
+                      color: const Color(0xFF662D91), // نفس لون الأيقونة المحددة
+
+                    ),
+                  ),
+                ),
+            ],
           ),
+          const SizedBox(height: 2),
           Text(
             label,
             style: TextStyle(
               fontSize: 12,
-              color: isSelected ? Color(0xFF662D91) : Color(0xFF9983A7),
+              color: isSelected
+                  ? const Color(0xFF662D91)
+                  : const Color(0xFF9983A7),
             ),
           ),
-
         ],
       ),
     );
   }
+
 }

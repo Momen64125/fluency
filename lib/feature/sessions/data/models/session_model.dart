@@ -15,7 +15,8 @@ class SessionModel extends SessionEntity {
       name: json['name'] ?? '',
       date: json['date'] ?? '',
       status: json['status'] ?? '',
-      duration: json['duration'] ?? '', group: '',
+      duration: json['duration'] ?? '',
+      group: json['group'] ?? '',
     );
   }
 
@@ -25,6 +26,7 @@ class SessionModel extends SessionEntity {
       'date': date,
       'status': status,
       'duration': duration,
+      'group': group
     };
   }
 }

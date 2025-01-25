@@ -7,7 +7,7 @@ class StatusWidget extends StatelessWidget {
   Color _getStatusColor(String status) {
     switch (status) {
       case 'Ongoing':
-        return Colors.blue;
+        return Color(0xFF6568FF);
       case 'Done':
         return Color(0xFF50CD89);
       case 'Schedule':
@@ -24,20 +24,21 @@ class StatusWidget extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(right: 8),
          width: 60,
-         height: 20,
+         height: 22,
 
       decoration: BoxDecoration(
         color: _getStatusColor(status).withOpacity(0.2),
-        border: Border.all(color: _getStatusColor(status)),
-        borderRadius: BorderRadius.circular(8),
+        // border: Border.all(color: _getStatusColor(status)),
+        borderRadius: BorderRadius.circular(500),
       ),
       child: Center(
         child: Text(
           status,
           style: TextStyle(
-            fontSize: 11,
+
+            fontSize: 8,
             color: _getStatusColor(status),
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w700,
           ),
         ),
       ),

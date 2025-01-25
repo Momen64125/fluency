@@ -19,13 +19,16 @@ class SessionsDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16.0), // تعيين الـ border radius
+      ),
+      borderOnForeground: true ,
       color: Color(0xFFFFFFFF),
       margin: const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
-
-          children: [
+           children: [
             Stack(
               alignment: Alignment.center,
               children: [
@@ -54,27 +57,35 @@ class SessionsDetails extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    name,
-                    style: const TextStyle(
-                      fontFamily: 'Nunito',
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+
+                  Row(
+
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+
+                     children: [
+                      Text(
+                        name,
+                        style: const TextStyle(
+
+                          fontSize: 12,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+
+                    ],
                   ),
-                  const SizedBox(height: 8),
+                  status == "Ongoing" ? const SizedBox(height: 8): const SizedBox(height: 0),
                   Row(
                     children: [
-                      const Icon(
-                        Icons.date_range,
-                        size: 16,
-                        color: Color(0xFF662D91),
+                      SvgPicture.asset(
+
+                        'assets/icons/tiem.svg',
                       ),
                       const SizedBox(width: 4),
                       Text(
                         date,
                         style: const TextStyle(
-                            fontFamily: 'Nunito',
+
                             fontSize: 14, color: Colors.grey),
                       ),
                     ],
@@ -84,29 +95,56 @@ class SessionsDetails extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       StatusWidget(status: status),
-                      Text(
 
-                        'Duration:$duration',
-                        style: const TextStyle(
-                          fontFamily: 'Nunito',
-                            fontSize: 10, color: Color(0xFF777777)),
-                      ),
+
                     ],
                   ),
                 ],
               ),
+
+
             ),
-            if (status != "Ongoing") Container(
-              width: 40,
-                height:40 ,
+             Column(
+               mainAxisAlignment: MainAxisAlignment.start,
+               crossAxisAlignment: CrossAxisAlignment.end,
+               children: [
+                 status != "Ongoing"? Container(
+                     width: 40,
+                     height:40 ,
 
-                decoration: BoxDecoration(
+                     decoration: BoxDecoration(
 
-                  color: Color( 0xFFF6F6F6),
-                  borderRadius:BorderRadius.circular(12) ,
-                ),
+                       color: Color( 0xFFF6F6F6),
+                       borderRadius:BorderRadius.circular(12) ,
+                     ),
 
-                child: const Icon(Icons.more_vert,color: Color(0xFF662D91),)),
+                     child: const Icon(Icons.more_vert,color: Color(0xFF662D91),))
+                     : const SizedBox(height: 40,width: 40,),
+                 SizedBox(height: 20,),
+
+                 Row(
+                   children: [
+                     Text(
+
+                       'Duration:',
+                       style: const TextStyle(
+                           fontWeight: FontWeight.w600,
+
+                           fontSize: 8, color: Color(0xFF777777)),
+                     ),
+                     Text(' $duration',
+
+                       style: const TextStyle(
+                           fontWeight: FontWeight.w700,
+                           fontFamily: 'Nunito',
+                           fontSize: 10, color: Color(0xFF777777)),
+
+                     ),
+                   ],
+                 ),
+               ]
+             )
+
           ],
         ),
       ),

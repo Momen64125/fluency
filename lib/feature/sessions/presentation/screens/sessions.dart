@@ -17,11 +17,25 @@ class SessionsScreen extends ConsumerWidget {
 
     return Scaffold(
       body: Column(
+
         children: [
           const ExpandableNotificationWidget(),
-          const Text(
-            ' My Sessions',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+          const Padding(
+            padding: EdgeInsets.only(top: 20.0),
+            child: Text(
+
+              textAlign: TextAlign.center,
+
+
+              'My sessions',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w900,
+                height: 27.28 / 20,
+                color: Color(0xFF362E3C),
+
+              ),
+            ),
           ),
           // Tabs
           Padding(
@@ -54,77 +68,41 @@ class SessionsScreen extends ConsumerWidget {
           ),
 
 
-          // Sessions List
-          // Expanded(
-          //   child: sessionController.isLoading
-          //       ? const Center(child: CircularProgressIndicator())
-          //       : sessionController.errorMessage != null
-          //       ? Center(child: Text(sessionController.errorMessage!))
-          //       : sessionController.sessions.isEmpty
-          //       ? Column(
-          //     mainAxisAlignment: MainAxisAlignment.center,
-          //     crossAxisAlignment: CrossAxisAlignment.center,
-          //     children: [
-          //       SvgPicture.asset(
-          //         'assets/images/Group 7.svg',
-          //         width: 1.sw * 0.5,
-          //         height: 1.sh * 0.3,
-          //       ),
-          //       const Text(
-          //         'No sessions',
-          //         style: TextStyle(
-          //             fontWeight: FontWeight.bold, fontSize: 24),
-          //       ),
-          //       const Text(
-          //         'Looks like there arent any sessions \n scheduled yet!',
-          //         style: TextStyle(
-          //             color: Color(0xFF777777),
-          //             fontWeight: FontWeight.bold,
-          //             fontSize: 14),
-          //       ),
-          //     ],
-          //   )
-          //       : ListView.builder(
-          //     itemCount: sessionController.sessions.length,
-          //     itemBuilder: (context, index) {
-          //       final session = sessionController.sessions[index];
-          //       return SessionsDetails(
-          //         name: session.name,
-          //         date: session.date,
-          //         duration: session.duration,
-          //         status: session.status,
-          //       );
-          //     },
-          //   ),
-          // ),
 
           Expanded(
             child: sessionController.isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : sessionController.errorMessage != null
                 ? Center(child: Text(sessionController.errorMessage!))
+                //: sessionController.sessions.isEmpty
                 : sessionController.filteredSessions.isEmpty
                 ? Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                 crossAxisAlignment: CrossAxisAlignment.center,
-                 children: [
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
                 SvgPicture.asset(
                   'assets/images/Group 7.svg',
                   width: 1.sw * 0.5,
                   height: 1.sh * 0.3,
                 ),
-                const Text('No sessions' ,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),
-                const Text('Looks like there arent any sessions \n scheduled yet!' ,style: TextStyle(
-                    color: Color(0xFF777777),
-
-                    fontWeight: FontWeight.bold,fontSize: 14),),
+                const Text(
+                  'No sessions',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 24),
+                ),
+                const Text(
+                  'Looks like there arent any sessions \n scheduled yet!',
+                  style: TextStyle(
+                      color: Color(0xFF777777),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14),
+                ),
               ],
             )
                 : ListView.builder(
               itemCount: sessionController.filteredSessions.length,
               itemBuilder: (context, index) {
-                final session =
-                sessionController.filteredSessions[index];
+                final session = sessionController.filteredSessions[index];
                 return SessionsDetails(
                   name: session.name,
                   date: session.date,
@@ -134,6 +112,43 @@ class SessionsScreen extends ConsumerWidget {
               },
             ),
           ),
+
+          // Expanded(
+          //   child: sessionController.isLoading
+          //       ? const Center(child: CircularProgressIndicator())
+          //       : sessionController.errorMessage != null
+          //       ? Center(child: Text(sessionController.errorMessage!))
+          //       : sessionController.filteredSessions.isEmpty
+          //       ? Column(
+          //       mainAxisAlignment: MainAxisAlignment.center,
+          //        crossAxisAlignment: CrossAxisAlignment.center,
+          //        children: [
+          //       SvgPicture.asset(
+          //         'assets/images/Group 7.svg',
+          //         width: 1.sw * 0.5,
+          //         height: 1.sh * 0.3,
+          //       ),
+          //       const Text('No sessions' ,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 24),),
+          //       const Text('Looks like there arent any sessions \n scheduled yet!' ,style: TextStyle(
+          //           color: Color(0xFF777777),
+          //
+          //           fontWeight: FontWeight.bold,fontSize: 14),),
+          //     ],
+          //   )
+          //       : ListView.builder(
+          //     itemCount: sessionController.filteredSessions.length,
+          //     itemBuilder: (context, index) {
+          //       final session =
+          //       sessionController.filteredSessions[index];
+          //       return SessionsDetails(
+          //         name: session.name,
+          //         date: session.date,
+          //         duration: session.duration,
+          //         status: session.status,
+          //       );
+          //     },
+          //   ),
+          // ),
 
         ],
       ),

@@ -10,17 +10,12 @@ class SessionController extends ChangeNotifier {
   String selectedTab = "Ongoing";
 
   List<SessionEntity> sessions = [
-    SessionEntity(name: "Mohamed Halwani", date: "May 5, 2024, 16:00 PM", status: "Cancelled", duration: "15 min", group: 'Ongoing'),
-    SessionEntity(name: "Mohamed Halwani", date: "May 3, 2024, 16:00 PM", status: "Schedule", duration: "15 min", group: 'History'),
-    SessionEntity(name: "Mohamed Halwani", date: "May 1, 2024, 16:00 PM", status: "Ongoing", duration: "15 min", group: 'Ongoing'),
-    SessionEntity(name: "Mohamed ", date: "May 7, 2024, 16:00 PM", status: "Ongoing", duration: "15 min", group: 'History'),
-    SessionEntity(name: "Mohamed ", date: "May 7, 2024, 16:00 PM", status: "Done", duration: "15 min", group: 'Ongoing'),
-
-    SessionEntity(name: "Mohamed Halwani", date: "May 5, 2024, 16:00 PM", status: "Cancelled", duration: "15 min", group: 'History'),
-    SessionEntity(name: "Mohamed Halwani", date: "May 3, 2024, 16:00 PM", status: "Schedule", duration: "15 min", group: 'History'),
-    SessionEntity(name: "Mohamed Halwani", date: "May 1, 2024, 16:00 PM", status: "Ongoing", duration: "15 min", group: 'Ongoing'),
-    SessionEntity(name: "Mohamed ", date: "May 7, 2024, 16:00 PM", status: "Ongoing", duration: "15 min", group: 'Ongoing'),
-    SessionEntity(name: "Mohamed ", date: "May 7, 2024, 16:00 PM", status: "Done", duration: "15 min", group: 'Ongoing'),
+    // SessionEntity(name: "Mohamed Halwani", date: "May 5, 2024, 16:00 PM", status: "Cancelled", duration: "15 min", group: 'Ongoing'),
+    // SessionEntity(name: "Mohamed Halwani", date: "May 3, 2024, 16:00 PM", status: "Schedule", duration: "15 min", group: 'History'),
+    // SessionEntity(name: "Mohamed Halwani", date: "May 1, 2024, 16:00 PM", status: "Ongoing", duration: "15 min", group: 'Ongoing'),
+    // SessionEntity(name: "Mohamed Halwani ", date: "May 7, 2024, 16:00 PM", status: "Ongoing", duration: "15 min", group: 'History'),
+    // SessionEntity(name: "Mohamed Halwani ", date: "May 7, 2024, 16:00 PM", status: "Done", duration: "15 min", group: 'Ongoing'),
+    // SessionEntity(name: "Momen", date: "May 7, 2024, 16:00 PM", status: "Done", duration: "15 min", group: 'Ongoing'),
   ];
   List<SessionEntity> get filteredSessions {
     if (selectedTab == "Ongoing") {
@@ -43,7 +38,7 @@ class SessionController extends ChangeNotifier {
       errorMessage = null;
       notifyListeners();
 
-    //  sessions = await fetchSessionsUseCase.execute();
+     sessions = await fetchSessionsUseCase.execute();
     } catch (e) {
       errorMessage = 'Failed to load sessions';
     } finally {

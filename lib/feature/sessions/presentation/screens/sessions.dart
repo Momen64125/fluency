@@ -83,15 +83,18 @@ class SessionsScreen extends ConsumerWidget {
                 SvgPicture.asset(
                   'assets/images/Group 7.svg',
                   width: 1.sw * 0.5,
-                  height: 1.sh * 0.3,
+                   height: 1.sh * 0.2,
+
+
                 ),
+                const SizedBox(height: 16,),
                 const Text(
                   'No sessions',
                   style: TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 24),
+                      fontWeight: FontWeight.w800, fontSize: 16),
                 ),
                 const Text(
-                  'Looks like there arent any sessions \n scheduled yet!',
+                  'Looks like there arent any sessions \n               scheduled yet!',
                   style: TextStyle(
                       color: Color(0xFF777777),
                       fontWeight: FontWeight.bold,

@@ -295,7 +295,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _screens = [
     NotificationsPage(),
-    SessionsScreen(),
+    const SessionsScreen(),
     const Center(child: Text('Add New Screen', style: TextStyle(fontSize: 24))),
     const Center(
         child: Text('Teachers Screen', style: TextStyle(fontSize: 24))),
@@ -314,9 +314,9 @@ class _HomePageState extends State<HomePage> {
       floatingActionButton: Container(
         width: 60,
         height: 60,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           shape: BoxShape.circle,
-          gradient: const LinearGradient(
+          gradient: LinearGradient(
             colors: [Color(0xFF662D91), Color(0xFF905EB6)],
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
@@ -340,7 +340,7 @@ class _HomePageState extends State<HomePage> {
 
             children: [
               _buildNavItem(
-                widget:Icon( Icons.home),
+                widget:const Icon( Icons.home),
 
                 label: 'Home',
                 index: 0,
@@ -352,7 +352,7 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(width: 40), // مكان الزر العائم
               _buildNavItem(
-                  widget:Icon( Icons.people_alt_outlined),
+                  widget:const Icon( Icons.people_alt_outlined),
                 label: 'Teachers',
                 index: 3,
               ),
@@ -434,9 +434,9 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     width: 20,
                     height: 5,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius:  BorderRadius.only( bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
-                      color: const Color(0xFF662D91), // نفس لون الأيقونة المحددة
+                      color: Color(0xFF662D91), // نفس لون الأيقونة المحددة
 
                     ),
                   ),
